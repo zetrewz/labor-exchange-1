@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Chat room{% endblock %}
+{% block content %}
+    {% for i in application %}
+        <p>{{ i.vacancy.user.username }}
+            <br><a href="{% url 'chat:chat_room' i.id %}">Перейти в чат</a>
+        </p>
+    {% empty %}
+        You are have no any applications.
+    {% endfor %}
+{% endblock %}
+

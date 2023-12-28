@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+    {% if query %}
+        {% for i in results %}
+            {% if request.user.profile %}
+                <div class="card" style="margin-left: 32px; margin-right: 32px; margin-bottom: 15px">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a href="{{ i.get_absolute_url }}">{{ i.work_name }}</a>
+                        </h5>
+                        <p class="card-text"><strong>Gender:</strong> {{ i.get_gender_display }}</p>
+                    </div>
+                </div>
+            {% else %}
+                <div class="card" style="margin-left: 13px; margin-right: 13px; margin-bottom: 15px">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a href="{{ i.get_absolute_url }}">{{ i.name }}</a>
+                        </h5>
+                        <p class="card-text"><strong>Зарплата:</strong> $50,000 - $70,000 в год</p>
+                        <p class="card-text"><strong>Город:</strong> Город</p>
+                        <button type="button" class="btn btn-primary apply-button" data-pk="{{ i.pk }}">Apply</button>
+                    </div>
+                </div>
+            {% endif %}
+        {% empty %}
+            No results
+        {% endfor %}
+    {% else %}
+        Empty query
+    {% endif %}
+{% endblock %}
+

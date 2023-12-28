@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label for="{{ form.work_name.id_for_label }}">Work name:</label>
+            {{ form.work_name }}
+        </div>
+
+        <div class="mb-3">
+            <label for="{{ form.gender.id_for_label }}">Your gender:</label>
+            {{ form.gender }}
+        </div>
+
+        <input type="submit" class="btn btn-primary" value="Save">
+    </form>
+{% endblock %}

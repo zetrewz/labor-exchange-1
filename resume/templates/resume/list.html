@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Resumes{% endblock %}
+{% block content %}
+    {% if not resume %}
+        <p><a href="{% url "resume:create" %}">Create resume</a></p>
+    {% endif %}
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">
+                <a href="{{ resume.get_absolute_url }}">{{ resume.work_name }}</a>
+            </h5>
+            <p class="card-text"><strong>Должность:</strong> {{ resume.work_name }}</p>
+            <a href="{% url "resume:update" resume.pk %}">Update resume</a>
+            <a href="{% url "resume:delete" resume.pk %}">Delete resume</a>
+        </div>
+    </div>
+{% endblock %}

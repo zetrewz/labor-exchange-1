@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+    {% for i in responses %}
+        <div class="card" style="margin: 13px">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <a href="{{ i.vacancy.get_absolute_url }}">{{ i.vacancy.name }}</a>
+                </h5>
+                <p class="card-text"><strong>Компания:</strong> Google</p>
+                <p class="card-text"><strong>Зарплата:</strong> $70,000</p>
+                <p class="card-text"><strong>Город:</strong> Вашингтон</p>
+                <button type="button" class="btn btn-primary apply-button" data-pk="{{ i.vacancy.pk }}">Apply</button>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
